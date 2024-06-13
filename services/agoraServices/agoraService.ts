@@ -75,6 +75,7 @@ const queryRecording = async (resourceId:string,sid:string) => {
     
         console.log(JSON.stringify(result.data),"*****************query")
     }catch(err){
+        clearInterval(interval)
         console.log(err, "query failedddd")
     }
 }
