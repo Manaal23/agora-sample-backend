@@ -60,18 +60,23 @@ const startRecording = async (resourceId: string, channelName:string, token:stri
 }
 
 const queryRecording = async (resourceId:string,sid:string) => {
-    const plainCredential = process.env.AGORA_CUSTOMER_KEY + ":" + process.env.AGORA_CUSTOMER_SECRET;
+    try{
 
-    const encodedCredential = Buffer.from(plainCredential).toString('base64')
-
-    const result = await axios.get(`https://api.agora.io/v1/apps/${process.env.AGORA_APP_ID}/cloud_recording/resourceid/${resourceId}/sid/${sid}/mode/web/query`, {
-        headers: {
-            "Authorization": "Basic " + encodedCredential,
-            "Content-Type": 'application/json'
-        }
-    })
-
-    console.log(JSON.stringify(result.data),"*****************query")
+        const plainCredential = process.env.AGORA_CUSTOMER_KEY + ":" + process.env.AGORA_CUSTOMER_SECRET;
+    
+        const encodedCredential = Buffer.from(plainCredential).toString('base64')
+    
+        const result = await axios.get(`https://api.agora.io/v1/apps/${process.env.AGORA_APP_ID}/cloud_recording/resourceid/${resourceId}/sid/${sid}/mode/web/query`, {
+            headers: {
+                "Authorization": "Basic " + encodedCredential,
+                "Content-Type": 'application/json'
+            }
+        })
+    
+        console.log(JSON.stringify(result.data),"*****************query")
+    }catch(err){
+        console.log(err, "query failedddd")
+    }
 }
 
 class agoraService{
