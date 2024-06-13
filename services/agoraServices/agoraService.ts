@@ -142,6 +142,7 @@ class agoraService{
                 data: "Recording stopped!"
             })
         }catch(e){
+            console.log(e,"****************Stop failed")
             return res.status(500).send({
                 success: false,
                 data: e
@@ -151,6 +152,7 @@ class agoraService{
 
     async agoraRecorder(req: Request, res: Response){
         console.log(req.headers,"***************889898")
+        console.log(req,"*****************mmmmmmmm")
         let token = genToken({ id: "token123", validity: "10m" });
         res.redirect(`${process.env.FRONTEND_URL}/live-streaming?${token}`)
     }
