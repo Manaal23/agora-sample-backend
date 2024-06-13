@@ -158,14 +158,15 @@ class agoraService{
 
     async agoraRecorder(req: Request, res: Response){
         console.log(req.headers,"***************889898")
-        console.log(req,"*****************mmmmmmmm")
         let token = genToken({ id: "token123", validity: "10m" });
         res.redirect(`${process.env.FRONTEND_URL}/live-streaming?${token}`)
+        console.log(`${process.env.FRONTEND_URL}/live-streaming?${token}`,"*****************mmmmmmmm")
     }
 
     async verifyRecorder(req: Request, res: Response){
 
         const token = req.headers.authorization as string;
+        console.log("inside verify............", token)
         const plainCredential = process.env.AGORA_CUSTOMER_KEY + ":" + process.env.AGORA_CUSTOMER_SECRET;
         const encodedCredential = Buffer.from(plainCredential).toString('base64')
 
@@ -176,6 +177,7 @@ class agoraService{
                 data: "Verification failed!"
               })
             } else {
+                console.log("inside decoding")
               const decodedToken = decoded as { id: string };
               if (decodedToken.id === encodedCredential)
                 return res.status(201).send({
