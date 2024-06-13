@@ -40,11 +40,12 @@ const startRecording = async (resourceId: string, channelName:string, token:stri
                 "secretKey": process.env.AWS_SECRET_ACCESS_KEY,
                 "fileNamePrefix": [
                     "Recording",
-                    `${channelName}-${uid}`,
+                    `${channelName}${uid}`,
                 ]
             }
         }
     }
+    console.log(JSON.stringify(body), `https://api.agora.io/v1/apps/${process.env.AGORA_APP_ID}/cloud_recording/resourceid/${resourceId}/mode/web/start`,"*************dddd")
     const result = await axios.post(`https://api.agora.io/v1/apps/${process.env.AGORA_APP_ID}/cloud_recording/resourceid/${resourceId}/mode/web/start`, body,{
         headers: {
             "Authorization": token,
