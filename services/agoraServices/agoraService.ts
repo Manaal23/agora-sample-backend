@@ -17,7 +17,7 @@ const startRecording = async (resourceId: string, channelName:string, token:stri
                         "serviceName": "web_recorder_service",
                         "errorHandlePolicy": "error_abort",
                         "serviceParam": {
-                            "url": `${process.env.SERVER_URL}/agora-recorder`,
+                            "url": `${process.env.SERVER_URL}/agora_recorder`,
                             "audioProfile": 0,
                             "videoWidth": 1280,
                             "videoHeight": 720,
