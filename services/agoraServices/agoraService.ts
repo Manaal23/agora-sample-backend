@@ -157,10 +157,10 @@ class agoraService{
     }
 
     async agoraRecorder(req: Request, res: Response){
-        console.log(req.headers,"***************889898")
+        console.log(req,"***************889898")
         let token = genToken({ id: "token123", validity: "10m" });
-        res.redirect(`${process.env.FRONTEND_URL}/live-streaming?${token}`)
-        console.log(`${process.env.FRONTEND_URL}/live-streaming?${token}`,"*****************mmmmmmmm")
+        res.redirect(`${process.env.FRONTEND_URL}/live-streaming?token=${token}`)
+        console.log(`${process.env.FRONTEND_URL}/live-streaming?token=${token}`,"*****************mmmmmmmm")
     }
 
     async verifyRecorder(req: Request, res: Response){
