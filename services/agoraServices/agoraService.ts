@@ -161,8 +161,7 @@ class agoraService{
         const plainCredential = process.env.AGORA_CUSTOMER_KEY + ":" + process.env.AGORA_CUSTOMER_SECRET;
         const encodedCredential = Buffer.from(plainCredential).toString('base64')
         let token = genToken({ id: encodedCredential, validity: "10m" });
-        res.redirect(`${process.env.FRONTEND_URL}/live-streaming?token=${token}`)
-        console.log(`${process.env.FRONTEND_URL}/live-streaming?token=${token}`,"*****************mmmmmmmm")
+        res.redirect(`${process.env.FRONTEND_URL}/live-streaming?${token}`)
     }
 
     async verifyRecorder(req: Request, res: Response){
